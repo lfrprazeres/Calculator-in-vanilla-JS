@@ -1,0 +1,89 @@
+
+/* CALCULADORA */
+body{
+    align-items: center;
+    background-image: linear-gradient(to top, white, #F5F5F5);
+    display: flex;
+    justify-content: center;
+}
+.container{
+    background-color: white;
+    border: 3px solid rebeccapurple;
+    border-radius: 15px;
+    color: rebeccapurple;
+    padding: 20px;
+}
+
+.container hr{
+    background-color: rebeccapurple;
+    height: 3px;
+}
+
+.container h1 {
+    color: rebeccapurple;
+}
+
+.container label {
+    color: rebeccapurple;
+    font-size: 18px;
+}
+
+.container input,select,button,label {
+    margin: 10px 0;
+}
+
+.container input {
+    color: rebeccapurple;
+    cursor: text;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.container select {
+    color: rebeccapurple;
+    padding: 5px 10px;
+}
+
+.container button {
+    background-color: rebeccapurple;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    outline: rebeccapurple;
+    padding: 10px 0;
+    transition: .2s ease-in-out;
+}
+
+.container button:active{
+    transform: translatey(5px);
+}
+
+/* ESCOLHA */
+
+.escolhaContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.escolhaContainer > hr {
+    width: 100%;
+}
+
+/* OPERAÇÕES BÁSICAS */
+
+.default{
+    display: none;
+    flex-direction: column;
+    outline: rebeccapurple;
+}
+
+
+
+.basic p {
+    color: rebeccapurple;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
