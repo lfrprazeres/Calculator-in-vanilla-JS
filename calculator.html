@@ -111,7 +111,7 @@
 				<p> Quais Valores você sabe? </p>
 				<select onchange="selectRetaCalc();" class="retaSelect">
 					<option value="">--Selecione uma operação</option>
-					<option value="1">Calcular dando o valor de X,A e A</option>
+					<option value="1">Calcular dando o valor de X,A e B</option>
 					<option value="2">Calcular dando o valor de Y,A e B</option>
 					<option value="3">Calcular dando o valor de X e Y</option>
 					<option value="4">Calcular dando o valor de A e B</option>
@@ -120,35 +120,67 @@
 				<!-- Container com valores X, A e B-->
 				<div class="default retaXAB">
 					<p> Tendo em vista que f(x) = ax + b </p>
-					<input type="text" class="calcFirstx" placeholder="Escreva o primeiro x" />
-					<input type="text" class="calcSecx" placeholder="Digite o segundo x" />
-					<button type="button" class="button" onclick="retaCalcx()"> Calcular </button>
+					<p> Valor de A: </p>
+					<input type="text" class="retaA-XAB" placeholder="Escreva o valor de a" />
+					<p> Valor de B: </p>
+					<input type="text" class="retaB-XAB" placeholder="Escreva o valor de b" />
+					<p> Valor do primeiro x: </p>
+					<input type="text" class="retaFirstX" placeholder="Escreva o valor do primeiro x" />
+					<p> Valor do segundo x: </p>
+					<input type="text" class="retaSecX" placeholder="Escreva o valor do segundo x" />
 
-					<p>Primeira Coordenada: </p> <input type="text" class="answerOne" readonly/>
-					<p>Segunda Coordenada: </p> <input type="text" class="answerTwo" readonly/>
+					<button type="button" class="button" onclick="retaXAB()"> Calcular </button>
+
+					<p class="equacaoRetaXAB"></p>
+					<p>Primeira Coordenada: </p> <input type="text" class="answerOneXAB" readonly/>
+					<p>Segunda Coordenada: </p> <input type="text" class="answerTwoXAB" readonly/>
 				</div>
 
 				<!-- Container com valores Y, A e B-->
 				<div class="default retaYAB">
-						<p> Tendo em vista que f(x) = ax + b </p>
-						<input type="text" class="calcFirstx" placeholder="Escreva o primeiro x" />
-						<input type="text" class="calcSecx" placeholder="Digite o segundo x" />
-						<button type="button" class="button" onclick="retaCalcx()"> Calcular </button>
-	
-						<p>Primeira Coordenada: </p> <input type="text" class="answerOne" readonly/>
-						<p>Segunda Coordenada: </p> <input type="text" class="answerTwo" readonly/>
-					</div>
+					<p> Tendo em vista que f(x) = ax + b </p>
+					<p> Valor de A: </p>
+					<input type="text" class="retaA-YAB" placeholder="Escreva o valor de a" />
+					<p> Valor de B: </p>
+					<input type="text" class="retaB-YAB" placeholder="Escreva o valor de b" />
+					<p> Valor do primeiro y: </p>
+					<input type="text" class="retaFirstY" placeholder="Escreva o valor do primeiro y" />
+					<p> Valor do segundo y: </p>
+					<input type="text" class="retaSecY" placeholder="Escreva o valor do segundo y" />
 
-					<!-- Container com valores X e Y-->
+					<button type="button" class="button" onclick="retaYAB()"> Calcular </button>
+
+					<p class="equacaoRetaYAB"></p>
+					<p>Primeira Coordenada: </p> <input type="text" class="answerOneYAB" readonly/>
+					<p>Segunda Coordenada: </p> <input type="text" class="answerTwoYAB" readonly/>
+				</div>
+
+				<!-- Container com valores X e Y-->
 				<div class="default retaXY">
-						<p> Tendo em vista que f(x) = ax + b </p>
-						<input type="text" class="calcFirstx" placeholder="Escreva o primeiro x" />
-						<input type="text" class="calcSecx" placeholder="Digite o segundo x" />
-						<button type="button" class="button" onclick="retaCalcx()"> Calcular </button>
-	
-						<p>Primeira Coordenada: </p> <input type="text" class="answerOne" readonly/>
-						<p>Segunda Coordenada: </p> <input type="text" class="answerTwo" readonly/>
-					</div>
+					<p> Tendo em vista que f(x) = ax + b </p>
+
+					<p> Valor do primeiro x: </p>
+					<input type="text" class="retaFirstX-XY" placeholder="Escreva o valor do primeiro x" />
+					<p> Valor do primeiro y: </p>
+					<input type="text" class="retaFirstY-XY" placeholder="Escreva o valor do primeiro y" />
+
+					<p> Valor do segundo x: </p>
+					<input type="text" class="retaSecX-XY" placeholder="Escreva o valor do segundo x" />
+					<p> Valor do segundo y: </p>
+					<input type="text" class="retaSecY-XY" placeholder="Escreva o valor do segundo y" />
+
+					<button type="button" class="button" onclick="retaXY()"> Calcular </button>
+
+					<p>Sistema: </p>
+					<p class="equacaoRetaXY1"></p>
+					<p class="equacaoRetaXY2"></p>
+
+					<p class="valorA-XY"></p>
+					<p class="valorB-XY"></p>
+					<p class="resultadoRetaXY"></p>
+					<p>Primeira Coordenada: </p> <input type="text" class="answerOneXY" readonly/>
+					<p>Segunda Coordenada: </p> <input type="text" class="answerTwoXY" readonly/>
+				</div>
 			</div>
 		</div>
 	</body>

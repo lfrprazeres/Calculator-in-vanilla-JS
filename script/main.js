@@ -321,4 +321,177 @@ function selectRetaCalc(){
 /* CALCULO DA RETA DANDO X, A E B*/
 
 function retaXAB(){
+    let a = parseInt(document.querySelector('.retaA-XAB').value);
+    let b = parseInt(document.querySelector('.retaB-XAB').value);
+    let primeiroX = parseInt(document.querySelector('.retaFirstX').value);
+    let segundoX = parseInt(document.querySelector('.retaSecX').value);
+    let primeiraCoordenada = document.querySelector('.answerOneXAB');
+    let segundaCoordenada = document.querySelector('.answerTwoXAB');
+    var equacao = document.querySelector('.equacaoRetaXAB');
+    let calculo = 0;
+
+    if(isNaN(a) || isNaN(b) || isNaN(primeiroX) || isNaN(segundoX)){
+        if(isNaN(a) && isNaN(b) && isNaN(primeiroX) && isNaN(segundoX)){
+            alert('Digite um valor válido para A, B, primeiro X e segundo X')
+        } else if(isNaN(a) && isNaN(b) && isNaN(primeiroX)){
+            alert('Digite um valor válido para A, B e primeiro X')
+        } else if(isNaN(a) && isNaN(b) && isNaN(segundoX)){
+            alert('Digite um valor válido para A,B e segundo X')
+        } else if(isNaN(a) && isNaN(primeiroX) && isNaN(segundoX)){
+            alert('Digite um valor válido para A, primeiro X e segundo X')
+        } else if(isNaN(b) && isNaN(primeiroX) && isNaN(segundoX)){
+            alert('Digite um valor válido para B, primeiro X e segundo X')
+        } else if(isNaN(a) && isNaN(b)){
+            alert('Digite um valor válido para A e B')
+        } else if(isNaN(a) && isNaN(primeiroX)){
+            alert('Digite um valor válido para A e Primeiro X')
+        } else if(isNaN(a) && isNaN(segundoX)){
+            alert('Digite um valor válido para A e Segundo X')
+        } else if(isNaN(b) && isNaN(primeiroX)){
+            alert('Digite um valor válido para B e Primeiro X')
+        } else if(isNaN(b) && isNaN(segundoX)) {
+            alert('Digite um valor válido para B e Segundo X')
+        } else if(isNaN(primeiroX) && isNaN(segundoX)){
+            alert('Digite um valor válido para Primeiro X e Segundo X')
+        } else if(isNaN(a)){
+            alert('Digite um valor válido para A')
+        } else if(isNaN(b)){
+            alert('Digite um valor válido para B')
+        } else if(isNaN(primeiroX)){
+            alert('Digite um valor válido para o Primeiro X')
+        } else if(isNaN(segundoX)){
+            alert('Digite um valor válido para o Segundo X')
+        }
+    } else {
+        calculo = a * primeiroX + b;
+        primeiraCoordenada.value = "(" + primeiroX + "," + calculo + ")";
+        calculo = a * segundoX + b;
+        segundaCoordenada.value = "(" + segundoX + "," + calculo + ")";
+        equacao.innerHTML = "o cálculo ficaria: " + "f(x) = " + a + "x " + " + " + b;
+        equacao.style.margin = "0px 0px 10px 0px";
+    }
+}
+
+function retaYAB(){
+    let a = parseInt(document.querySelector('.retaA-YAB').value);
+    let b = parseInt(document.querySelector('.retaB-YAB').value);
+    let primeiroY = parseInt(document.querySelector('.retaFirstY').value);
+    let segundoY = parseInt(document.querySelector('.retaSecY').value);
+    let primeiraCoordenada = document.querySelector('.answerOneYAB');
+    let segundaCoordenada = document.querySelector('.answerTwoYAB');
+    var equacao = document.querySelector('.equacaoRetaYAB');
+    let calculo = 0;
+
+    if(isNaN(a) || isNaN(b) || isNaN(primeiroY) || isNaN(segundoY)){
+        if(isNaN(a) && isNaN(b) && isNaN(primeiroY) && isNaN(segundoY)){
+            alert('Digite um valor válido para A, B, primeiro Y e segundo Y')
+        } else if(isNaN(a) && isNaN(b) && isNaN(primeiroY)){
+            alert('Digite um valor válido para A, B e primeiro Y')
+        } else if(isNaN(a) && isNaN(b) && isNaN(segundoY)){
+            alert('Digite um valor válido para A,B e segundo Y')
+        } else if(isNaN(a) && isNaN(primeiroY) && isNaN(segundoY)){
+            alert('Digite um valor válido para A, primeiro Y e segundo Y')
+        } else if(isNaN(b) && isNaN(primeiroY) && isNaN(segundoY)){
+            alert('Digite um valor válido para B, primeiro Y e segundo Y')
+        } else if(isNaN(a) && isNaN(b)){
+            alert('Digite um valor válido para A e B')
+        } else if(isNaN(a) && isNaN(primeiroY)){
+            alert('Digite um valor válido para A e Primeiro Y')
+        } else if(isNaN(a) && isNaN(segundoY)){
+            alert('Digite um valor válido para A e Segundo Y')
+        } else if(isNaN(b) && isNaN(primeiroY)){
+            alert('Digite um valor válido para B e Primeiro Y')
+        } else if(isNaN(b) && isNaN(segundoY)) {
+            alert('Digite um valor válido para B e Segundo Y')
+        } else if(isNaN(primeiroY) && isNaN(segundoY)){
+            alert('Digite um valor válido para Primeiro Y e Segundo Y')
+        } else if(isNaN(a)){
+            alert('Digite um valor válido para A')
+        } else if(isNaN(b)){
+            alert('Digite um valor válido para B')
+        } else if(isNaN(primeiroY)){
+            alert('Digite um valor válido para o Primeiro Y')
+        } else if(isNaN(segundoY)){
+            alert('Digite um valor válido para o Segundo Y')
+        }
+    } else {
+        calculo = (primeiroY - b) / a
+        primeiraCoordenada.value = "(" + calculo + "," + primeiroY + ")";
+        calculo = (segundoY - b) / a
+        segundaCoordenada.value = "(" + calculo + "," + segundoY + ")";
+        equacao.innerHTML = "o cálculo ficaria: " + "f(x) = " + a + "x " + " + " + b;
+        equacao.style.margin = "0px 0px 10px 0px";
+    }
+}
+
+function retaXY(){
+    let primeiroX = parseInt(document.querySelector('.retaFirstX-XY').value);
+    let primeiroY = parseInt(document.querySelector('.retaFirstY-XY').value);
+    let segundoX = parseInt(document.querySelector('.retaSecX-XY').value);
+    let segundoY = parseInt(document.querySelector('.retaSecY-XY').value);
+    let primeiraCoordenada = document.querySelector('.answerOneXY');
+    let segundaCoordenada = document.querySelector('.answerTwoXY');
+    var equacao1 = document.querySelector('.equacaoRetaXY1');
+    var equacao2 = document.querySelector('.equacaoRetaXY2');
+    let equacaoTotal = document.querySelector('.resultadoRetaXY');
+    var valorA = document.querySelector('.valorA-XY');
+    var valorB = document.querySelector('.valorB-XY');
+    let calculo = 0;
+    let calculoa = 0;
+    let calculob = 0;
+
+    if(isNaN(primeiroX) || isNaN(segundoX) || isNaN(primeiroY) || isNaN(segundoY)){
+        if(isNaN(primeiroX) && isNaN(segundoX) && isNaN(primeiroY) && isNaN(segundoY)){
+            alert('Digite um valor válido para o primeiro X, segundo X, primeiro Y e para o segundo Y')
+        } else if(isNaN(primeiroX) && isNaN(segundoX) && isNaN(primeiroY)){
+            alert('Digite um valor válido para o primeiro X, segundo X e para o primeiro Y')
+        } else if(isNaN(primeiroX) && isNaN(segundoX) && isNaN(segundoY)){
+            alert('Digite um valor válido para o primeiro X, segundo X e para o segundo Y')
+        } else if(isNaN(primeiroX) && isNaN(primeiroY) && isNaN(segundoY)){
+            alert('Digite um valor válido para o primeiro X, primeiro Y e para o segundo Y')
+        } else if(isNaN(segundoX) && isNaN(primeiroY) && isNaN(segundoY)){
+            alert('Digite um valor válido para o segundo X, primeiro Y e para o segundo Y')
+        } else if(isNaN(primeiroX) && isNaN(segundoX)){
+            alert('Digite um valor válido para o primeiro X e para o segundo X')
+        } else if(isNaN(primeiroX) && isNaN(primeiroY)){
+            alert('Digite um valor válido para o primeiro X e para o Primeiro Y')
+        } else if(isNaN(primeiroX) && isNaN(segundoY)){
+            alert('Digite um valor válido para o primeiro X e para o segundo Y')
+        } else if(isNaN(segundoX) && isNaN(primeiroY)){
+            alert('Digite um valor válido para o segundo X e primeiro Y')
+        } else if(isNaN(segundoX) && isNaN(segundoY)) {
+            alert('Digite um valor válido para o segundo X e para o Segundo Y')
+        } else if(isNaN(primeiroY) && isNaN(segundoY)){
+            alert('Digite um valor válido para primeiro Y e para o segundo Y')
+        } else if(isNaN(primeiroX)){
+            alert('Digite um valor válido para o primeiro X')
+        } else if(isNaN(segundoX)){
+            alert('Digite um valor válido para o segundo X')
+        } else if(isNaN(primeiroY)){
+            alert('Digite um valor válido para o primeiro Y')
+        } else if(isNaN(segundoY)){
+            alert('Digite um valor válido para o segundo Y')
+        }
+    } else {
+        equacao1.innerHTML = primeiroY + " = " + primeiroX + "a + b";
+        equacao2.innerHTML = segundoY + " = " + segundoX + "a + b"; 
+        equacao1.style.margin = "10px 0px 0px 0px";
+        equacao2.style.margin = "0px 0px 10px 0px";
+        
+        /* CALCULOAUX ACHA O QUE VAI ESTAR MULTIPLICANDO A*/
+        calculo = primeiroX - segundoX;
+
+        /* CALCULA O RESTANTE*/
+        calculoa = -(-primeiroY + segundoY) / calculo;
+        valorA.innerHTML = "valor de A: " + calculoa;
+
+        /* CALCULA O B*/
+        calculob = -(calculo * primeiroX) / primeiroY
+        valorB.innerHTML = "valor de B: " + calculob;
+
+        primeiraCoordenada.value = "(" + primeiroX + "," + primeiroY + ")";
+        segundaCoordenada.value = "(" + segundoX + "," + segundoY + ")";
+        equacaoTotal.innerHTML = "a equação ficaria: f(x) = " + calculoa + "x + " + calculob;
+        equacao.style.margin = "0px 0px 10px 0px";
+    }
 }
