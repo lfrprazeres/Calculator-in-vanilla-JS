@@ -466,9 +466,9 @@ function retaXY(){
     let equacaoTotal = document.querySelector('.resultadoRetaXY');
     var valorA = document.querySelector('.valorA-XY');
     var valorB = document.querySelector('.valorB-XY');
-    let calculo = 0;
-    let deltaX = (primeiroX - segundoX);
-    let deltaY = (primeiroY - segundoY);
+
+    let deltaX = primeiroX - segundoX;
+    let deltaY = primeiroY - segundoY;
     let calculoa = 0;
     let calculob = 0;
 
@@ -510,14 +510,76 @@ function retaXY(){
         equacao1.style.margin = "10px 0px 0px 0px";
         equacao2.style.margin = "0px 0px 10px 0px";
 
-        /* CALCULA O RESTANTE*/
+        /* CALCULA O A*/
         calculoa = ((deltaY / deltaX) % 1 == 0 ) ?  deltaY / deltaX : deltaY + "/" + deltaX ;
-        valorA.innerHTML = "valor de A: " + calculoa;
+        /* VALIDAÇÃO PARA SIMPLIFICAR O RESULTADO DE A*/
+        if(isNaN(calculoa)) {
+            let simpANumerador = deltaY;
+            let simpADenominador = deltaX;
+            while(simpANumerador % 2 == 0 && simpADenominador % 2 == 0){
+                simpANumerador = simpANumerador / 2;
+                simpADenominador = simpADenominador / 2;
+            }
+            while(simpANumerador % 3 == 0 && simpADenominador % 3 == 0) {
+                simpANumerador = simpANumerador / 3;
+                simpADenominador = simpADenominador / 3;
+            }
+            while(simpANumerador % 5 == 0 && simpADenominador % 5 == 0) {
+                simpANumerador = simpANumerador / 5;
+                simpADenominador = simpADenominador / 5;
+            }
+            while(simpANumerador % 7 == 0 && simpADenominador % 7 == 0) {
+                simpANumerador = simpANumerador / 7;
+                simpADenominador = simpADenominador / 7;
+            }
+            if(simpADenominador < 0){
+                simpANumerador = -simpANumerador;
+                simpADenominador = -simpADenominador;
+                calculob = simpANumerador + "/" + simpADenominador
+            } else {
+                calculob = simpBNumerador + "/" + simpBDenominador
+            }
+            calculoa = simpANumerador + "/" + simpADenominador
+            valorA.innerHTML = "valor de A: " + calculoa;
+        } else {
+            valorA.innerHTML = "valor de A: " + calculoa;
+        }
 
         /* CALCULA O B*/
         calculob = ((primeiroY - (deltaY / deltaX) * primeiroX ) % 1 == 0) ? (primeiroY - (deltaY / deltaX) * primeiroX ) : (deltaX * primeiroY - deltaY * primeiroX) + "/" + deltaX;
         
-        valorB.innerHTML = "valor de B: " + calculob;
+        if(isNaN(calculob)) {
+            let simpBNumerador = deltaX * primeiroY - deltaY * primeiroX;
+            let simpBDenominador = deltaX;
+            while(simpBNumerador % 2 == 0 && simpBDenominador % 2 == 0){
+                simpBNumerador = simpBNumerador / 2;
+                simpBDenominador = simpBDenominador / 2;
+            }
+            while(simpBNumerador % 3 == 0 && simpBDenominador % 3 == 0) {
+                simpBNumerador = simpBNumerador / 3;
+                simpBDenominador = simpBDenominador / 3;
+            }
+            while(simpBNumerador % 5 == 0 && simpBDenominador % 5 == 0) {
+                simpBNumerador = simpBNumerador / 5;
+                simpBDenominador = simpBDenominador / 5;
+            }
+            while(simpBNumerador % 7 == 0 && simpBDenominador % 7 == 0) {
+                simpBNumerador = simpBNumerador / 7;
+                simpBDenominador = simpBDenominador / 7;
+            }
+            if(simpBDenominador < 0){
+                simpBNumerador = -simpBNumerador;
+                simpBDenominador = -simpBDenominador;
+                calculob = simpBNumerador + "/" + simpBDenominador
+            } else {
+                calculob = simpBNumerador + "/" + simpBDenominador
+            }
+            
+            valorB.innerHTML = "valor de B: " + calculob;
+        } else {
+            valorB.innerHTML = "valor de B: " + calculob;
+        }
+        
 
         primeiraCoordenada.value = "(" + primeiroX + "," + primeiroY + ")";
         segundaCoordenada.value = "(" + segundoX + "," + segundoY + ")";
@@ -556,6 +618,8 @@ function fxgxPrimeiro(){
     var equacao = document.querySelector('.fxgx-equacao');
     var calculo = 0;
     var calculoX = 0;
+    let calculoY = 0;
+    let answer = document.querySelector('.answerfxgxPrimeiro');
 
     if(isNaN(fxA) || isNaN(fxB) || isNaN(gxA) || isNaN(gxB)){
         if(isNaN(fxA) && isNaN(fxB) && isNaN(gxA) && isNaN(gxB)){
@@ -592,6 +656,39 @@ function fxgxPrimeiro(){
     } else {
         equacao.innerHTML = "a equação é: " + fxA + "x + " + fxB + " = " + gxA + "x + " + gxB;
         calculo = fxA - gxA;
-        calculoX = -(fxB - gxB) / calculo;
+        calculoX = ((-fxB + gxB) / calculo % 1 == 0) ? (-fxB + gxB) / calculo : -fxB + gxB + "/" + calculo;
+        if(isNaN(calculoX)){
+            let simpXNumerador = -fxB + gxB;
+            let simpXDenominador = calculo;
+            while(simpXNumerador % 2 == 0 && simpXDenominador % 2 == 0){
+                simpXNumerador = simpXNumerador / 2;
+                simpXDenominador = simpXDenominador / 2;
+            }
+            while(simpXNumerador % 3 == 0 && simpXDenominador % 3 == 0) {
+                simpXNumerador = simpXNumerador / 3;
+                simpXDenominador = simpXDenominador / 3;
+            }
+            while(simpXNumerador % 5 == 0 && simpXDenominador % 5 == 0) {
+                simpXNumerador = simpXNumerador / 5;
+                simpXDenominador = simpXDenominador / 5;
+            }
+            while(simpXNumerador % 7 == 0 && simpXDenominador % 7 == 0) {
+                simpXNumerador = simpXNumerador / 7;
+                simpXDenominador = simpXDenominador / 7;
+            }
+            if(simpXDenominador < 0){
+                simpXNumerador = -simpXNumerador;
+                simpXDenominador = -simpXDenominador;
+                calculoX = simpXNumerador + "/" + simpXDenominador
+            } else {
+                calculoX = simpXNumerador + "/" + simpXDenominador
+
+            }
+            calculoY =  ((-fxB * fxA + gxB * fxA) +  (fxA * fxB - gxA * fxB)) / (fxA - gxA);
+            answer.value = "(" + calculoX + "," + calculoY +")";
+        } else {
+            calculoY = fxA * calculoX + fxB;
+            answer.value = "(" + calculoX + "," + calculoY + ")";
+        }
     }
 }
