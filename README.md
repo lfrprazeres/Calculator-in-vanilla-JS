@@ -9,3 +9,4 @@ Atualmente ela tem a capacidade de fazer os seguintes cálculos:
   - Equação de primeiro grau
   - Equação de segundo grau
   - cálculo de coordenadas de uma reta
+  - Achar coordenadas de interseção igualando duas funções ~em construção~
