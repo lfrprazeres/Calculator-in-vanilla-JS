@@ -5,6 +5,7 @@ var radiciacao = document.querySelector('.radiciacao');
 var primeiroGrau = document.querySelector('.primeiro-grau');
 var segundoGrau = document.querySelector('.segundo-grau');
 var retaCalc = document.querySelector('.retaCalc');
+var fxgx = document.querySelector('.fxgx')
 
 /* ESCOLHA DO TIPO DE CÁLCULO*/
 function escolha(){
@@ -12,12 +13,13 @@ function escolha(){
     switch(escolha.value) {
         case "1":
             basic.style.display = "flex";
-            log.style.display = "none";
             potenciacao.style.display = "none";
+            log.style.display = "none";
             radiciacao.style.display = "none";
             primeiroGrau.style.display = "none";
             segundoGrau.style.display = "none";
             retaCalc.style.display = "none";
+            fxgx.style.display = "none";
             break;
         case "2":
             potenciacao.style.display = "flex";
@@ -27,6 +29,7 @@ function escolha(){
             primeiroGrau.style.display = "none";
             segundoGrau.style.display = "none";
             retaCalc.style.display = "none";
+            fxgx.style.display = "none";
             break;
         case "3":
             radiciacao.style.display = "flex";
@@ -36,6 +39,7 @@ function escolha(){
             primeiroGrau.style.display = "none";
             segundoGrau.style.display = "none";
             retaCalc.style.display = "none";
+            fxgx.style.display = "none";
             break;
         case "4":
             log.style.display = "flex";
@@ -45,6 +49,7 @@ function escolha(){
             primeiroGrau.style.display = "none";
             segundoGrau.style.display = "none";
             retaCalc.style.display = "none";
+            fxgx.style.display = "none";
             break;
         case "5":
             primeiroGrau.style.display = "flex";
@@ -54,6 +59,7 @@ function escolha(){
             radiciacao.style.display = "none";
             segundoGrau.style.display = "none";
             retaCalc.style.display = "none";
+            fxgx.style.display = "none";
             break;
         case "6":
             segundoGrau.style.display = "flex";
@@ -63,6 +69,7 @@ function escolha(){
             radiciacao.style.display = "none";
             primeiroGrau.style.display = "none";
             retaCalc.style.display = "none";
+            fxgx.style.display = "none";
             break;
         case "7":
             retaCalc.style.display = "flex";
@@ -72,9 +79,28 @@ function escolha(){
             radiciacao.style.display = "none";
             primeiroGrau.style.display = "none";
             segundoGrau.style.display = "none";
+            fxgx.style.display = "none";
+            break;
+        case "8":
+            fxgx.style.display = "flex";
+            basic.style.display = "none";
+            log.style.display = "none";
+            potenciacao.style.display = "none";
+            radiciacao.style.display = "none";
+            primeiroGrau.style.display = "none";
+            segundoGrau.style.display = "none";
+            retaCalc.style.display = "none";
             break;
         default: 
-            alert('escolha uma operação válida')
+            alert('escolha uma operação válida');
+            basic.style.display = "none";
+            log.style.display = "none";
+            potenciacao.style.display = "none";
+            radiciacao.style.display = "none";
+            primeiroGrau.style.display = "none";
+            segundoGrau.style.display = "none";
+            retaCalc.style.display = "none";
+            fxgx.style.display = "none";
             
     }
 }
@@ -372,6 +398,8 @@ function retaXAB(){
     }
 }
 
+/* CALCULO DA RETA DANDO Y, A E B*/
+
 function retaYAB(){
     let a = parseInt(document.querySelector('.retaA-YAB').value);
     let b = parseInt(document.querySelector('.retaB-YAB').value);
@@ -424,6 +452,8 @@ function retaYAB(){
     }
 }
 
+/* CALCULO DA RETA DANDO X e Y*/
+
 function retaXY(){
     let primeiroX = parseInt(document.querySelector('.retaFirstX-XY').value);
     let primeiroY = parseInt(document.querySelector('.retaFirstY-XY').value);
@@ -437,6 +467,8 @@ function retaXY(){
     var valorA = document.querySelector('.valorA-XY');
     var valorB = document.querySelector('.valorB-XY');
     let calculo = 0;
+    let deltaX = (primeiroX - segundoX);
+    let deltaY = (primeiroY - segundoY);
     let calculoa = 0;
     let calculob = 0;
 
@@ -477,21 +509,89 @@ function retaXY(){
         equacao2.innerHTML = segundoY + " = " + segundoX + "a + b"; 
         equacao1.style.margin = "10px 0px 0px 0px";
         equacao2.style.margin = "0px 0px 10px 0px";
-        
-        /* CALCULOAUX ACHA O QUE VAI ESTAR MULTIPLICANDO A*/
-        calculo = primeiroX - segundoX;
 
         /* CALCULA O RESTANTE*/
-        calculoa = -(-primeiroY + segundoY) / calculo;
+        calculoa = ((deltaY / deltaX) % 1 == 0 ) ?  deltaY / deltaX : deltaY + "/" + deltaX ;
         valorA.innerHTML = "valor de A: " + calculoa;
 
         /* CALCULA O B*/
-        calculob = -(calculo * primeiroX) / primeiroY
+        calculob = ((primeiroY - (deltaY / deltaX) * primeiroX ) % 1 == 0) ? (primeiroY - (deltaY / deltaX) * primeiroX ) : (deltaX * primeiroY - deltaY * primeiroX) + "/" + deltaX;
+        
         valorB.innerHTML = "valor de B: " + calculob;
 
         primeiraCoordenada.value = "(" + primeiroX + "," + primeiroY + ")";
         segundaCoordenada.value = "(" + segundoX + "," + segundoY + ")";
-        equacaoTotal.innerHTML = "a equação ficaria: f(x) = " + calculoa + "x + " + calculob;
+        equacaoTotal.innerHTML = (calculob > 0) ? "a equação ficaria: f(x) = " + calculoa + "x + " + calculob : "a equação ficaria: f(x) = " + calculoa + "x " + calculob;
         equacao.style.margin = "0px 0px 10px 0px";
+    }
+}
+
+/* cálculo das coordenadas de interseção com funções de primeiro grau*/
+function selectfxgx(){
+    var fxgxSelect = document.querySelector('.fxgxSelect');
+    var primeiroGrau = document.querySelector('.fxgxPrimeiro');
+    var segundoGrau = document.querySelector('.fxgxSegundo');
+    switch(fxgxSelect.value){
+        case "1":
+            primeiroGrau.style.display = "flex";
+            segundoGrau.style.display = "none";
+
+            break;
+        case "2":
+            segundoGrau.style.display = "flex";
+            primeiroGrau.style.display = "none";
+            break;
+        default:
+            alert('Escolha uma opção válida');
+            primeiroGrau.style.display = "none";
+            segundoGrau.style.display = "none";
+    }
+}
+
+function fxgxPrimeiro(){
+    var fxA = parseInt(document.querySelector('.fxgx-fxA').value);
+    var fxB = parseInt(document.querySelector('.fxgx-fxB').value);
+    var gxA = parseInt(document.querySelector('.fxgx-gxA').value);
+    var gxB = parseInt(document.querySelector('.fxgx-gxB').value);
+    var equacao = document.querySelector('.fxgx-equacao');
+    var calculo = 0;
+    var calculoX = 0;
+
+    if(isNaN(fxA) || isNaN(fxB) || isNaN(gxA) || isNaN(gxB)){
+        if(isNaN(fxA) && isNaN(fxB) && isNaN(gxA) && isNaN(gxB)){
+            alert('Digite um valor válido para A e B de f(x) e para A e B de g(x)');
+        } else if(isNaN(fxA) && isNaN(fxB) && isNaN(gxA)){
+            alert('Digite um valor válido para A e B de f(x) e para A de g(x)');
+        } else if(isNaN(fxA) && isNaN(fxB) && isNaN(gxB)){
+            alert('Digite um valor válido para A e B de f(x) e para B de g(x)');
+        } else if(isNaN(fxA) && isNaN(gxA) && isNaN(gxB)){
+            alert('Digite um valor válido para A de f(x) e para A e B de g(x)');
+        } else if(isNaN(fxB) && isNaN(gxA) && isNaN(gxB)){
+            alert('Digite um valor válido para B de f(x) e para A e B de g(x)');
+        } else if(isNaN(fxA) && isNaN(fxB)){
+            alert('Digite um valor válido para A e B de f(x)');
+        } else if(isNaN(fxA) && isNaN(gxA)){
+            alert('Digite um valor válido para A de f(x) e para A de g(x)');
+        } else if(isNaN(fxA) && isNaN(gxB)){
+            alert('Digite um valor válido para A de f(x) e para B de g(x)');
+        } else if(isNaN(fxB) && isNaN(gxA)){
+            alert('Digite um valor válido para B de f(x) e para A de g(x)');
+        } else if(isNaN(fxB) && isNaN(gxB)){
+            alert('Digite um valor válido para B de f(x) e para B de g(x)');
+        } else if(isNaN(fxA)){
+            alert('Digite um valor válido para A de f(x)');
+        } else if(isNaN(fxB)){
+            alert('Digite um valor válido para B de f(x)');
+        } else if(isNaN(gxA)){
+            alert('Digite um valor válido para A de g(x)');
+        } else if(isNaN(gxB)){
+            alert('Digite um valor válido para B de g(x)');
+        } else if(fxA === gxA){
+            alert('O X dará 0');
+        }
+    } else {
+        equacao.innerHTML = "a equação é: " + fxA + "x + " + fxB + " = " + gxA + "x + " + gxB;
+        calculo = fxA - gxA;
+        calculoX = -(fxB - gxB) / calculo;
     }
 }

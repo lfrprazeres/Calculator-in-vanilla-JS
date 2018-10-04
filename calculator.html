@@ -28,6 +28,7 @@
 					<option value="5"> Equação de Primeiro Grau </option>
 					<option value="6"> Equação de Segundo Grau </option>
 					<option value="7"> Cálculo de coordenadas de uma reta </option>
+					<option value="8"> Achar coordenadas de interseção igualando duas funções </option>
 				</select>
 
 				<hr />
@@ -180,6 +181,37 @@
 					<p class="resultadoRetaXY"></p>
 					<p>Primeira Coordenada: </p> <input type="text" class="answerOneXY" readonly/>
 					<p>Segunda Coordenada: </p> <input type="text" class="answerTwoXY" readonly/>
+				</div>
+			</div>
+			<div class="default fxgx">
+				<p> Qual vai ser o grau da equação? </p>
+				<select onchange="selectfxgx();" class="fxgxSelect">
+					<option value="">--Selecione uma operação</option>
+					<option value="1"> Primeiro grau </option>
+					<option value="2">Segundo grau</option>
+				</select>
+
+				<div class="default fxgxPrimeiro">
+					<p> Tendo em vista que f(x) e g(x) = ax + b e que f(x) = g(x)</p>
+
+					<p> Digite o valor de A em f(x) </p>
+					<input type="text" class="fxgx-fxA" placeholder="Escreva o valor de a" />
+					<p> Digite o valor de B em f(x) </p>
+					<input type="text" class="fxgx-fxB" placeholder="Escreva o valor de b" />
+					<p> Digite o valor de A em g(x) </p>
+					<input type="text" class="fxgx-gxA" placeholder="Escreva o valor de a" />
+					<p> Digite o valor de B em g(x) </p>
+					<input type="text" class="fxgx-gxB" placeholder="Escreva o valor de b" />
+
+					<button type="button" class="button" onclick="fxgxPrimeiro()"> Calcular </button>
+					<p class="fxgx-equacao"></p>
+					<p class="equacaoRetaYAB"></p>
+					<p>Primeira Coordenada: </p> <input type="text" class="answerOneYAB" readonly/>
+					<p>Segunda Coordenada: </p> <input type="text" class="answerTwoYAB" readonly/>
+				</div>
+
+				<div class="default fxgxSegundo">
+					Segundo
 				</div>
 			</div>
 		</div>
