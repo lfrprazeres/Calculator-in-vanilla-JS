@@ -91,16 +91,6 @@ body{
     margin-top: 10px;
 }
 
-.graphicContainer {
-    align-items: center;
-    display: none;
-    flex-direction: column;
-}
-
-.graphicContainer button {
-    padding: 10px;
-}
-
 @media (max-width: 768px) {
     .container{
         width: 80%;
