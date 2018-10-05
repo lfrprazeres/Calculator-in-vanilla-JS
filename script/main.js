@@ -113,6 +113,7 @@ function basicCalc(){
     var secondInput = document.querySelector('.n2');
     var n1 = parseInt(document.querySelector('.n1').value);
     var n2 = parseInt(document.querySelector('.n2').value);
+    let escolha = document.querySelector('.divisaoFloat');
     if(isNaN(n1) || isNaN(n2)){
         if(isNaN(n1) && isNaN(n2)) {
             firstInput.placeholder = "digite um número válido";
@@ -136,14 +137,52 @@ function basicCalc(){
         case "4":
             if(n2 == 0) {
                 alert('divisão por 0 não é possível')
+            } else if (n1 / n2 % 1 != 0) {
+                escolha.style.display = "flex";
             } else {
                 total.value = n1 / n2;
             }
             break;
         default:
-            total.value = "escolha uma operação"
-    }}
+            total.value = "escolha uma operação";
+        }
+    }
 }
+
+/* SELEÇÃO DE TIPO DE RESPOSTA PARA DIVISÃO */
+function divisaoFloat() {
+    let escolha = document.querySelector('.divisaoFloat');
+    var total = document.querySelector('.basicTotal');
+    let n1 = parseInt(document.querySelector('.n1').value);
+    let n2 = parseInt(document.querySelector('.n2').value);
+    switch(escolha.value) {
+        case "1":
+            total.value = n1 / n2;
+            break;
+        case "2":
+            while(n1 % 2 == 0 && n2 % 2 == 0){
+                n1 = n1 / 2;
+                n2 = n2 / 2;
+            }
+            while(n1 % 3 == 0 && n2 % 3 == 0){
+                n1 = n1 / 3;
+                n2 = n2 / 3;
+            }
+            while(n1 % 5 == 0 && n2 % 5 == 0){
+                n1 = n1 / 5;
+                n2 = n2 / 5;
+            }
+            while(n1 % 7 == 0 && n2 % 7 == 0){
+                n1 = n1 / 7;
+                n2 = n2 / 7;
+            }
+            total.value = n1 + "/" + n2;
+            break;
+        default:
+            alert('escolha uma opção válida');
+    }
+}
+
 
 /* CÁLCULO DE LOGARÍTMO */
 
@@ -227,6 +266,7 @@ function primeiroGrauCalc(){
     var a = parseFloat(document.querySelector('.PrimeiroGrauA').value);
     var b = parseFloat(document.querySelector('.PrimeiroGrauB').value);
     var equacao = document.querySelector('.equacaoPrimeiroGrau');
+    let graficoButton = document.querySelector('.primeiroGrauGrafico');
 
     var total = document.querySelector('.primeiroGrauTotal');
 
@@ -241,7 +281,18 @@ function primeiroGrauCalc(){
     } else {
         equacao.innerHTML = "A equação é: " + a + "x + " + b + " = 0"; 
         total.value = (-b / a);
+        graficoButton.style.display = "flex";
     }
+}
+/* CRIANDO O GRÁFICO DA EQUAÇÃO DE PRIMEIRO GRAU */
+
+function primeiroGrauGrafico(){
+    var a = parseFloat(document.querySelector('.PrimeiroGrauA').value);
+    var b = parseFloat(document.querySelector('.PrimeiroGrauB').value);
+    var x2 = (-b + 1) / a;
+    var y2 = 1;
+    location.href = "graphic.html?pontos=" + document.querySelector('.primeiroGrauTotal').value + "&" + 0 + "&" + x2 + "&" + y2;
+    
 }
 
 function segundoGrauCalc() {
@@ -467,8 +518,8 @@ function retaXY(){
     var valorA = document.querySelector('.valorA-XY');
     var valorB = document.querySelector('.valorB-XY');
 
-    let deltaX = primeiroX - segundoX;
-    let deltaY = primeiroY - segundoY;
+    let deltaX = segundoX - primeiroX;
+    let deltaY = segundoY - primeiroY;
     let calculoa = 0;
     let calculob = 0;
 
@@ -512,6 +563,7 @@ function retaXY(){
 
         /* CALCULA O A*/
         calculoa = ((deltaY / deltaX) % 1 == 0 ) ?  deltaY / deltaX : deltaY + "/" + deltaX ;
+        alert(deltaY / deltaX);
         /* VALIDAÇÃO PARA SIMPLIFICAR O RESULTADO DE A*/
         if(isNaN(calculoa)) {
             let simpANumerador = deltaY;

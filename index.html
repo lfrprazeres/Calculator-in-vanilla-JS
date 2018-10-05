@@ -46,8 +46,13 @@
 					<option value="4">Divisão</option>
 				</select>
 				
-				<input type="text" class="n2" placeholder="Digite um número"/>
+				<input type="text" class="n2" placeholder="Digite outro número"/>
 				<button type="button" class="button" onclick="basicCalc()">Calcular</button>
+				<select id="divisaoFloat" class="default divisaoFloat" onchange="divisaoFloat()">
+					<option value=""> --Qual tipo de resposta você quer?</option>
+					<option value="1"> Resposta como ponto flutuante </option>
+					<option value="2"> Resposta como fração </option>
+				</select>
 
 			<hr />
 				<p>Resultado: </p> <input type="text" class="basicTotal" readonly/>
@@ -92,6 +97,7 @@
 				<button type="button" class="button" onclick="primeiroGrauCalc()"> Calcular </button>
 				<p class="equacaoPrimeiroGrau"> </p>
 				<p>Resultado: </p> <input type="text" class="primeiroGrauTotal" readonly/>
+				<button class="default primeiroGrauGrafico" onclick="primeiroGrauGrafico()"> Clique aqui se quiser ver o gráfico dessa função </button>
 			</div>
 
 			<!-- Equação de Segundo Grau -->
