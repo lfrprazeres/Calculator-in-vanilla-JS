@@ -5,7 +5,11 @@ var radiciacao = document.querySelector('.radiciacao');
 var primeiroGrau = document.querySelector('.primeiro-grau');
 var segundoGrau = document.querySelector('.segundo-grau');
 var retaCalc = document.querySelector('.retaCalc');
-var fxgx = document.querySelector('.fxgx')
+var fxgx = document.querySelector('.fxgx');
+
+let graphicContainer = document.querySelector('.graphicContainer');
+let calculator = document.querySelector('.calculator');
+let grafico = document.getElementById('graphic').getContext('2d');
 
 /* ESCOLHA DO TIPO DE CÁLCULO*/
 function escolha(){
@@ -267,7 +271,6 @@ function primeiroGrauCalc(){
     var b = parseFloat(document.querySelector('.PrimeiroGrauB').value);
     var equacao = document.querySelector('.equacaoPrimeiroGrau');
     let graficoButton = document.querySelector('.primeiroGrauGrafico');
-
     var total = document.querySelector('.primeiroGrauTotal');
 
     if(isNaN(a) || isNaN(b)) {
@@ -289,10 +292,40 @@ function primeiroGrauCalc(){
 function primeiroGrauGrafico(){
     var a = parseFloat(document.querySelector('.PrimeiroGrauA').value);
     var b = parseFloat(document.querySelector('.PrimeiroGrauB').value);
+    let x1 = document.querySelector('.primeiroGrauTotal').value;
+    let y1 = 0;
     var x2 = (-b + 1) / a;
     var y2 = 1;
-    location.href = "graphic.html?pontos=" + document.querySelector('.primeiroGrauTotal').value + "&" + 0 + "&" + x2 + "&" + y2;
+    alert('Este recurso ainda não está disponível');
+    /*
+    graphicContainer.style.display = "flex";
+    calculator.style.display = "none";
+
+    let chart = new chart(grafico, {
+        type: 'line',
     
+        data: {
+            labels: [
+                x1,
+                x2
+            ],
+            datasets: [{
+                label: 'dos pontos (' + x1 + ',' + y1 + ") aos pontos (" + x2 + ',' + y2 + ")",
+                data: [
+                    y1,
+                    y2
+                ],
+                borderColor: "#663399"
+            }]
+        }
+    });
+    */
+}
+
+/* Volta para a calculadora */
+function back(){
+    graphicContainer.style.display = "none";
+    calculator.style.display = "block";
 }
 
 function segundoGrauCalc() {
